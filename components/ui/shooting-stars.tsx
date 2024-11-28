@@ -47,7 +47,7 @@ const ShootingStars: React.FC = () => {
       setStar(newStar);
 
       // Set a random delay (between 0.5 and 4 seconds) for creating the next star
-      const randomDelay = Math.random() * 4500 + 4200;
+      const randomDelay = Math.random() * 4500 + 3000;
       setTimeout(createStar, randomDelay);
     };
 
