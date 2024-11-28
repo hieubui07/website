@@ -6,13 +6,16 @@ import ShootingStars from "./ui/shooting-stars";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center justify-center relative w-full">
-      <h2 className='relative flex-col md:flex-row z-10 text-3xl md:text-5xl md:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white flex items-center gap-2 md:gap-8'>
-        <span>this is my website</span>
-
-      </h2>
-    
+    <div className="h-screen flex flex-col items-center justify-center relative w-full">
+      <div className='absolute top-0 left-0 w-full h-full'>
+        <ShootingStars />
+        <StarsBackground />
+      </div>
+      <div className='relative flex justify-center items-center w-full h-full z-[1] text-center text-white'>
+        <h1>website</h1>
+      </div>
     </div>
+  
   )
 }
 
