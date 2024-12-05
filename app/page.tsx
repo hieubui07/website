@@ -1,12 +1,23 @@
 "use client"
 
 import React from "react";
-import Hero from "@/components/Hero";
+import Hero from "@/components/pages/Hero";
+import Navbar from "@/components/Navbar";
+
+import ShootingStars from "@/components/ui/shooting-stars";
+import StarsBackground from "@/components/ui/stars-background";
 
 export default function Home() {
   return (
-    <div className=" bg-slate-900 ">
-      <Hero/>
-    </div>
+    <main className="bg-slate-900">
+      <div className='absolute top-0 left-0 w-full h-full z-[1]'>
+        <ShootingStars />
+        <StarsBackground />
+      </div>
+      <Navbar/>
+      <div>
+        <Hero/>
+      </div>
+    </main>
   );
 }
