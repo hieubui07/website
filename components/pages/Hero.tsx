@@ -2,23 +2,25 @@
 
 import React from 'react'
 import Image from 'next/image';
-import { useTypewriter, Cursor } from 'react-simple-typewriter'
+/*import { useTypewriter, Cursor } from 'react-simple-typewriter'*/
 import github from "@/components/pages/logo/githubicon.png";
 import gmail from "@/components/pages/logo/gmailicon.png";
 import linkedin from "@/components/pages/logo/linkedinicon.png";
 
 const Hero = () => {
-  const [text] = useTypewriter({
+  /*const [text] = useTypewriter({
     words: ['Developer', 'Analyst', 'Engineer'],
     loop: 0,
     typeSpeed: 100,
     deleteSpeed: 80,
+    
   });
+  */
   return (
-    <div className="h-[calc(100vh_-_8rem_-_35px)] relative w-full grid place-content-center">
+    <div className="h-[calc(100vh_-_0.5px)] w-screen relative grid place-content-center">
       <div className='z-[1]'>
         <h1 className='text-white text-start py-8 text-[30px]'>Hieu Bui</h1>
-        <h1 className='text-white text-center text-[60px]'>Developer<Cursor/></h1>
+        <h1 className='text-white text-center text-[60px]'>Developer</h1>
       </div>
       <div className='z-[1] pt-8'>
       <ul className='gap-6 pt-8 flex justify-center items-center'>
