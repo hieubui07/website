@@ -17,7 +17,7 @@ const Hero = () => {
   });
   */
   return (
-    <div className="h-[calc(100vh_-_0.5px)] w-screen relative grid place-content-center">
+    <div id="projects" className="h-[calc(100vh_-_100px)] w-screen relative grid place-content-center projects">
       <div className='z-[1]'>
         <h1 className='text-white text-start py-8 text-[30px]'>Hieu Bui</h1>
         <h1 className='text-white text-center text-[60px]'>Developer</h1>
