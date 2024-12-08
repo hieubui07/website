@@ -6,8 +6,11 @@ import NavLink from '@/components/NavLink';
 import Image from 'next/image';
 
 const Navbar = () => {
-    const [nav, setNavbarOpen] = useState(false);
-    const handleClick = () => setNavbarOpen(!nav);
+    const [nav, setNav] = useState(false);
+    const handleClick = () => {
+      setNav(!nav);
+    }
+    const handleClose =()=> setNav(!nav)
     const [rotation, setRotation] = useState(0);
 
     const rotateImage = () => {
@@ -15,47 +18,41 @@ const Navbar = () => {
      };
 
     return (
-      <nav className='z-10 mx-auto top-0 left-0 right-0 relative'>
-      <div className='container mx-auto px-4 py-4 flex justify-evenly items-center text-white h-[100px]'>
-       {/* menu */}
-        <div className='flex justify-center items-center gap-[6rem] text-lg'>
-          <Link href="/" className='active:font-bold hover:underline'><li>Logo</li></Link>
-        </div>
-          
-        
-         
-        <div className="md:hidden px-4 py-10 flex flex-wrap justify-left text-white">
-        {/* Hamburger */}
-          <button onClick={handleClick} className='md:hidden z-10 flex justify-items-start size-10' >
-            <img onClick={rotateImage}
-            style={{ transform: `rotate(${rotation}deg)` }}
-            src={rows_white.src}
+    <nav className='z-10 mx-auto top-0 left-0 right-0 relative'>
+      <div className=' w-screen h-[100px] drop-shadow-lg'>
+        <div className='px-2 flex justify-between md:justify-evenly items-center w-full h-full'>
+          <div className='flex items-center'>
+            <h1 className='text-3xl font-bold mr-4 sm:text-4xl'>
+            <Link className='text-2xl text-white' href="/">Logo</Link>
+            </h1>
+            <ul className='hidden md:flex justify-between items-center gap-6'>
+              <li className='text-white'><Link href="/projects">projects</Link></li>
+              <li className='text-white'><Link href="/experiences">experiences</Link></li>
+              <li className='text-white'><Link href="/contact">contact</Link></li>
+            </ul>
+          </div>
+          <div className='md:hidden mr-4' onClick={handleClick}>
+              {!nav ? <Image onClick={rotateImage}
+            src={rows_white}
             alt=''
-             />
-          </button>
+            height={40}
+            width={40}
+             /> : <Image onClick={rotateImage}
+             style={{ transform: `rotate(${rotation}deg)` }}
+             src={rows_white}
+             alt=''
+             height={40}
+             width={40}
+              />}
+          </div>
         </div>
-        {/* Mobile menu */}
-        <div
-          className={`absolute top-0 left-0 w-full h-screen flex flex-col justify-center items-center text-white ${
-            nav ? "block" : "hidden"
-          }`}
-        >
-            <div className='py-6 text-4xl'>
-              <Link href="/">Home</Link>
-            </div>
-            <div className='py-6 text-4xl'>
-              <Link href="/projects">projects</Link>
-            </div>
-            <div className='py-6 text-4xl'>
-              <Link href="/experiences">experiences</Link>
-            </div>
-            <div className='py-6 text-4xl'>
-              <Link href="/contact">contact</Link>
-            </div>
-                
-        </div>
-        </div>
-      </nav>
+        <ul className={!nav ? 'hidden' : 'absolute w-full flex flex-col justify-center items-center h-[89vh] bg-slate-900 bg-opacity-100 text-white'}>
+          <li className='py-6 text-4xl'><Link onClick={handleClose} href="/projects">projects</Link></li>
+          <li className='py-6 text-4xl'><Link onClick={handleClose} href="/experiences">experiences</Link></li>
+          <li className='py-6 text-4xl'><Link onClick={handleClose} href="/contact">contact</Link></li>
+        </ul>
+      </div>
+    </nav>
   )
 }
 
