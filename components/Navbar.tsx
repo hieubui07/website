@@ -19,11 +19,11 @@ const Navbar = () => {
     return (
     <nav className='z-10 top-0 left-0 right-0 relative'>
       <div className=' w-full h-[100px] drop-shadow-lg'>
-        <div className='pl-6 md:p-0 flex justify-between md:justify-center items-center h-full'>
-          <div className='flex items-center w-[30%]'>
-            <h1 className=' font-bold pr-[100px] xl:pr-[250px] text-[20px]'>
+        <div className='pl-6 md:p-0 flex items-center justify-between md:justify-normal w-full h-full'>
+          <div className='flex justify-between items-center md:w-[45%] md:mx-auto'>
+            <div className=' font-bold text-[20px]'>
             <Link className='text-2xl text-white' href="/">Logo</Link>
-            </h1>
+            </div>
             <ul className='hidden md:flex justify-between items-center gap-2'>
               <li className='text-white text-[15px]'><Link href="/projects">projects</Link></li>
               <h1 className='text-white'>/</h1>

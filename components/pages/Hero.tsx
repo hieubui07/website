@@ -17,7 +17,7 @@ const Hero = () => {
   });
   */
   return (
-    <div id="home" className="h-[calc(100vh_-_100px)] w-[75%] md:w-[30%] flex justify-center items-start pt-20 lg:pt-[180px] xl:pt-20 mx-auto z-[1] ">
+    <div id="home" className=" w-[75%] md:w-[45%] flex justify-center items-start pt-[50px] md:py-[50px] mx-auto z-[1] ">
       <div className=''>
         <h1 className='text-white py-8 text-[20px]'>Hi, I'm Hieu Bui</h1>
         <h1 className='text-white py-4 text-[20px]'>Developer</h1>
