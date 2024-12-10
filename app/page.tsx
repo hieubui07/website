@@ -10,14 +10,12 @@ import StarsBackground from "@/components/ui/stars-background";
 export default function Home() {
   return (
     <main className="bg-slate-900">
-      <div className='absolute top-0 left-0 w-full h-full z-[1]'>
+      <div className='absolute top-0 left-0 w-full h-full z-[0]'>
         <ShootingStars />
         <StarsBackground />
       </div>
       <Navbar/>
-      <div>
-        <Hero/>
-      </div>
+      <Hero/>
     </main>
   );
 }
