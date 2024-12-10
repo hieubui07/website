@@ -15,7 +15,7 @@ export default function Home() {
         <StarsBackground />
       </div>
       <Navbar/>
-      <Hero/>
+      <Hero />
     </main>
   );
 }
