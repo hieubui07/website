@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import Link from "next/link";
 import rows_white from "@/components/assets/rows_white.png"
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -16,11 +17,13 @@ const Navbar = () => {
         setRotation(rotation + 90);
      };
 
+     const router = useRouter()
+
     return (
     <nav className='z-10 top-0 left-0 right-0 relative'>
       <div className=' w-full h-[100px] drop-shadow-lg'>
         <div className='pl-6 md:p-0 flex items-center justify-between md:justify-normal w-full h-full'>
-          <div className='flex justify-between items-center md:w-[45%] md:mx-auto'>
+          <div className='flex justify-between items-center md:w-[40%] md:mx-auto'>
             <div className=' font-bold text-[20px]'>
             <Link className='text-2xl text-white' href="/">Logo</Link>
             </div>
