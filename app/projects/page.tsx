@@ -3,7 +3,7 @@
 import React from 'react'
 import ShootingStars from "@/components/ui/shooting-stars";
 import StarsBackground from "@/components/ui/stars-background";
-import Projects from "@/components/pages/Projects";
+
 import Navbar from '@/components/Navbar';
 
 function Page () {

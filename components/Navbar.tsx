@@ -3,7 +3,22 @@ import React, {useState} from 'react'
 import Link from "next/link";
 import rows_white from "@/components/assets/rows_white.png"
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { li } from 'framer-motion/client';
+
+const navItems = [
+  {
+    name: "Projects",
+    href: "/projects",
+  },
+  {
+    name: "Experience",
+    href: "/experience",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
+  },
+];
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -17,8 +32,6 @@ const Navbar = () => {
         setRotation(rotation + 90);
      };
 
-     const router = useRouter()
-
     return (
     <nav className='z-10 top-0 left-0 right-0 relative'>
       <div className=' w-full h-[100px] drop-shadow-lg'>
@@ -27,12 +40,14 @@ const Navbar = () => {
             <div className=' font-bold text-[20px]'>
             <Link className='text-2xl text-white' href="/">Logo</Link>
             </div>
-            <ul className='hidden md:flex justify-between items-center gap-2'>
-              <li className='text-white text-[15px]'><Link href="/projects">projects</Link></li>
-              <h1 className='text-white'>/</h1>
-              <li className='text-white text-[15px]'><Link href="/experiences">experiences</Link></li>
-              <h1 className='text-white'>/</h1>
-              <li className='text-white text-[15px]'><Link href="/contact">contact</Link></li>
+            <ul className='hidden md:flex justify-between items-center gap-6 text-white'>
+              {
+                navItems.map((item) => (
+                  <li key={item.name} >
+                  <Link href={item.href}>{item.name}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div className='md:hidden p-6 relative border-white' onClick={handleClick}>
@@ -51,9 +66,13 @@ const Navbar = () => {
           </div>
         </div>
         <ul className={!nav ? 'hidden' : 'absolute w-full md:hidden flex flex-col justify-center items-center h-[89vh] bg-slate-900 bg-opacity-100 text-white'}>
-          <li className='py-6 text-[30px]'><Link onClick={handleClose} href="/projects">projects</Link></li>
-          <li className='py-6 text-[30px]'><Link onClick={handleClose} href="/experiences">experiences</Link></li>
-          <li className='py-6 text-[30px]'><Link onClick={handleClose} href="/contact">contact</Link></li>
+          {
+            navItems.map((item) => (
+              <li key={item.name}>
+                <Link href={item.href} onClick={handleClose} className='py-6 text-[30px]'>{item.name}</Link>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </nav>
