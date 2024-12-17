@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import React from "react";
-import Header from "./Header";
+import Header from "@/app/components/Header";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -34,8 +34,9 @@ export default function RootLayout({
           <Header />
           {children}
         </main>
+        
       </body>
-      
+
     </html>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
-import ShootingStars from "@/components/ui/shooting-stars";
-import StarsBackground from "@/components/ui/stars-background";
-import Navbar from "@/components/Navbar";
+import ShootingStars from "@/app/components/ui/shooting-stars";
+import StarsBackground from "@/app/components/ui/stars-background";
+import Navbar from "@/app/components/Navbar";
 
 export default function Header() {
   return (

@@ -1,7 +1,7 @@
 "use client"
 import React, {useState} from 'react'
 import Link from "next/link";
-import rows_white from "@/components/assets/rows_white.png"
+import rows_white from "@/public/assets/rows_white.png"
 import Image from 'next/image';
 import { li } from 'framer-motion/client';
 
@@ -40,7 +40,7 @@ const Navbar = () => {
             <div className=' font-bold text-[20px]'>
             <Link className='text-2xl text-white' href="/">Logo</Link>
             </div>
-            <ul className='hidden md:flex justify-between items-center gap-6 text-white'>
+            <ul className='hidden md:flex justify-between items-center gap-8 text-white'>
               {
                 navItems.map((item) => (
                   <li key={item.name} >
@@ -68,8 +68,8 @@ const Navbar = () => {
         <ul className={!nav ? 'hidden' : 'absolute w-full md:hidden flex flex-col justify-center items-center h-[89vh] bg-slate-900 bg-opacity-100 text-white'}>
           {
             navItems.map((item) => (
-              <li key={item.name}>
-                <Link href={item.href} onClick={handleClose} className='py-6 text-[30px]'>{item.name}</Link>
+              <li key={item.name} className='py-8'>
+                <Link href={item.href} onClick={handleClose} className='text-[30px]'>{item.name}</Link>
               </li>
             ))
           }
