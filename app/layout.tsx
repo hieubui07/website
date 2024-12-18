@@ -3,6 +3,7 @@ import React from "react";
 import Header from "@/app/components/Header";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "./components/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,13 +27,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-slate-900 h-[100vh]">
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="bg-slate-900 h-[100vh]">
           <Header />
           {children}
+          <Footer/>
         </main>
         
       </body>
