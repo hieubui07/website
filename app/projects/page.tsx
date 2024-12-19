@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-
 const projectsData = [
   {
     id: '1',
@@ -31,7 +30,7 @@ function Page () {
       {projectsData.map((project) => (
         <div key={project.id} className='text-white py-4 w-full flex flex-col md:flex-row space-y-2 md:space-y-0'>
           <div className='flex flex-row space-x-0 md:space-x-4'>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className='w-[180px]'>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className='w-[180px] text-neutral-400 hover:underline'>
               {project.title}
             </a>
           </div>
