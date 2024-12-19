@@ -33,6 +33,7 @@ function Page () {
   return (
     <div id="projects" className="relative w-[75%] md:w-[40%] z-[1] h-[calc(100vh_-_8rem_-_35px)] flex flex-col justify-center items-start mx-auto">
       <h1 className='font-semibold text-white mb-6 text-2xl'>Experience</h1>
+      
       {experienceData.map((experience) => (
         <div key={experience.id} className='text-white py-4 w-full flex flex-col md:flex-row space-y-2 md:space-y-0'>
           <div className='flex flex-row space-x-0 md:space-x-4'>
@@ -40,10 +41,10 @@ function Page () {
               {experience.place}
             </div>
           </div>
-          <div className=''>{experience.title}</div>
+          <div className='flex '>{experience.title}</div>
         </div>
       ))}
-      <h1 className='font-semibold text-white mt-6 mb-6 text-2xl'>Leadership</h1>
+      <h1 className='font-semibold text-white mt-6 mb-6 text-2xl text-center'>Leadership</h1>
       {leadershipData.map((leadership) => (
         <div key={leadership.id} className='text-white py-4 w-full flex flex-col md:flex-row space-y-2 md:space-y-0'>
           <div className='flex flex-row space-x-0 md:space-x-4'>
@@ -51,9 +52,12 @@ function Page () {
               {leadership.place}
             </a>
           </div>
-          <div className='text-center'>{leadership.title}</div>
+          <div>{leadership.title}</div>
         </div>
       ))}
+      <div className='w-full mt-6'>
+        <button className='text-white text-2xl'><a href='/Hieu_Bui_Resume.pdf' target='_blank'>Resume</a></button>
+      </div>
     </div>
   )
 }
