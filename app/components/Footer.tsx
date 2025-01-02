@@ -6,7 +6,7 @@ import { FiGithub } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <div className='z-[1] mt-6 relative w-full gap-5 flex justify-center items-center'>
+    <div className='z-[1] h-[4vh] mt-6 relative w-full gap-5 flex justify-center items-center'>
       <a href='https://www.linkedin.com/in/hbui0107/'target='blank'>
         <FiLinkedin color='white' size='1.5rem'/>
       </a>

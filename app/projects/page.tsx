@@ -26,11 +26,11 @@ const projectsData = [
 function Page () {
   return (
     <div id="projects" className="relative w-[75%] md:w-[40%] z-[1] h-[calc(100vh_-_8rem_-_35px)] flex flex-col justify-center m-auto ">
-      <h1 className='font-semibold text-white mb-8 text-2xl'>Projects</h1>
+      <h1 className='font-semibold text-white mb-8 text-xl'>Projects</h1>
       {projectsData.map((project) => (
         <div key={project.id} className='text-white py-4 w-full flex flex-col md:flex-row space-y-2 md:space-y-0'>
           <div className='flex flex-row space-x-0 md:space-x-4'>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className='w-[180px] text-neutral-400 hover:underline'>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className='w-[180px] text-cyan-500 hover:underline'>
               {project.title}
             </a>
           </div>
