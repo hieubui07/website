@@ -33,23 +33,24 @@ const Navbar = () => {
      };
 
     return (
-    <nav className='z-10 top-0 left-0 right-0 relative'>
+    <nav className='top-0 left-0 right-0 relative'>
       <div className=' w-full h-[100px] drop-shadow-lg'>
         <div className='pl-6 md:p-0 flex items-center justify-between md:justify-normal w-full h-full'>
-          <div className='flex justify-between items-center md:w-[40%] md:mx-auto'>
-            <div className=' font-bold text-[20px]'>
-            <Link className='text-2xl text-white' href="/">Logo</Link>
+          <div className='flex justify-between items-center md:mx-auto'>
+            <div className='pr-8 font-bold'>
+            <Link className='text-[20px] text-white' href="/">Logo</Link>
             </div>
-            <ul className='hidden md:flex justify-between items-center gap-8 text-white'>
+            <ul className='hidden md:flex justify-between items-center gap-8 text-[12px] text-black mb-0'>
               {
                 navItems.map((item) => (
-                  <li key={item.name} >
-                  <Link href={item.href}>{item.name}</Link>
+                  <li key={item.name}>
+                  <Link href={item.href} className='text-black'>{item.name}</Link>
                   </li>
                 ))
               }
             </ul>
           </div>
+          {/* Rows Icon */}
           <div className='md:hidden p-6 relative border-white' onClick={handleClick}>
             {!nav ? <Image onClick={rotateImage}
               src={rows_white}
@@ -65,11 +66,12 @@ const Navbar = () => {
             />}
           </div>
         </div>
+        {/* Mobile Nav */}
         <ul className={!nav ? 'hidden' : 'absolute w-full md:hidden flex flex-col justify-center items-center h-[89vh] bg-slate-900 bg-opacity-100 text-white'}>
           {
             navItems.map((item) => (
               <li key={item.name} className='py-8'>
-                <Link href={item.href} onClick={handleClose} className='text-[30px]'>{item.name}</Link>
+                <Link href={item.href} onClick={handleClose} className='text-[20px]'>{item.name}</Link>
               </li>
             ))
           }

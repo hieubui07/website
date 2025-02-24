@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
 import React from "react";
 import Header from "@/app/components/Header";
-import localFont from "next/font/local";
+import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
+import "nes.css/css/nes.min.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={pressStart2P.className}
       >
-        <main className="bg-slate-900 h-[100vh]">
+        <main className="h-[100vh]">
           <Header />
           {children}
           <Footer/>
