@@ -4,7 +4,7 @@ import Link from "next/link";
 import rows_white from "@/public/assets/rows_white.png"
 import Image from 'next/image';
 import { li } from 'framer-motion/client';
-
+{/*
 const navItems = [
   {
     name: "Projects",
@@ -50,7 +50,9 @@ const Navbar = () => {
               }
             </ul>
           </div>
-          {/* Rows Icon */}
+          */}
+          {/*
+          
           <div className='md:hidden p-6 relative border-white' onClick={handleClick}>
             {!nav ? <Image onClick={rotateImage}
               src={rows_white}
@@ -66,7 +68,7 @@ const Navbar = () => {
             />}
           </div>
         </div>
-        {/* Mobile Nav */}
+        
         <ul className={!nav ? 'hidden' : 'absolute w-full md:hidden flex flex-col justify-center items-center h-[89vh] bg-slate-900 bg-opacity-100 text-white'}>
           {
             navItems.map((item) => (
@@ -82,3 +84,23 @@ const Navbar = () => {
 }
 
 export default Navbar;
+*/}
+interface NavbarProps {
+  handleHome: () => void;
+  handleAboutMe: () => void;
+  handleProjects: () => void;
+  handleContact: () => void;
+}
+
+export default function Navbar({ handleHome, handleAboutMe, handleProjects, handleContact }: NavbarProps) {
+  return (
+    <nav className="flex justify-center top-[40px] w-full relative z-10">
+      <ul className="flex justify-center gap-8 text-[12px] text-black mb-0">
+        <li onClick={handleHome} style={{ cursor: "pointer" }}>Home</li>
+        <li onClick={handleAboutMe} style={{ cursor: "pointer" }}>About Me</li>
+        <li onClick={handleProjects} style={{ cursor: "pointer" }}>Projects</li>
+        <li onClick={handleContact} style={{ cursor: "pointer" }}>Contact</li>
+      </ul>
+    </nav>
+  );
+}

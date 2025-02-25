@@ -29,6 +29,7 @@ export default function Hero (){
     setShowButton(false);
     setShowContact(false);
     setShowProjects(false);
+
   };
 
   const handleContinue = () => {
@@ -40,6 +41,8 @@ export default function Hero (){
     setShowButton(true);
     setShowNav(false);
     setShowAboutMe(false);
+    setShowProjects(false);
+    setShowContact(false);
   };
 
   const handleProjects = () => {
@@ -70,8 +73,8 @@ export default function Hero (){
   return (
 
     <div className="container">
-      {showNav && (
-        
+      
+        {/*}
           <nav className="flex justify-center top-[40px] w-full relative z-10">
             <ul className='flex justify-center gap-8 text-[12px] text-black mb-0'>
               <li onClick = {handleHome} style = {{cursor: "pointer"}}>Home</li>
@@ -80,8 +83,16 @@ export default function Hero (){
               <li onClick={handleContact} style={{ cursor: "pointer" }}>Contact</li>
             </ul>
           </nav>
-        
+        */}
+        {showNav && (
+        <Navbar
+          handleHome={handleHome}
+          handleAboutMe={handleAboutMe}
+          handleProjects={handleProjects}
+          handleContact={handleContact}
+        />
       )}
+      
       {showAboutMe && <Experience />}
       {showProjects && <Projects />}
       {showContact && <Contact />}
