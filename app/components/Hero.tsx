@@ -9,9 +9,9 @@ import linkedin from "@/components/pages/logo/linkedinicon.png";
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import Navbar from './Navbar';
-import Experience from './Experience';
-import Projects from './Projects';
-import Contact from './Contact';
+import Experience from '../experience/page';
+import Projects from '../projects/page';
+import Contact from '../contact/page';
 
 export default function Hero (){
   const [typedText, setTypedText] = useState("");
@@ -29,14 +29,14 @@ export default function Hero (){
     setShowButton(false);
     setShowContact(false);
     setShowProjects(false);
-
   };
 
   const handleContinue = () => {
     setShowButton(false);
     setShowNav(true);
+    setShowAboutMe(true);
   };
-
+  {/*
   const handleHome = () => {
     setShowButton(true);
     setShowNav(false);
@@ -44,7 +44,7 @@ export default function Hero (){
     setShowProjects(false);
     setShowContact(false);
   };
-
+  */}
   const handleProjects = () => {
     setShowNav(true);
     setShowAboutMe(false);
@@ -86,7 +86,7 @@ export default function Hero (){
         */}
         {showNav && (
         <Navbar
-          handleHome={handleHome}
+         
           handleAboutMe={handleAboutMe}
           handleProjects={handleProjects}
           handleContact={handleContact}

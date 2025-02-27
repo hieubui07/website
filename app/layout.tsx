@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import React from "react";
-import Header from "@/app/components/Header";
 import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import "nes.css/css/nes.min.css";
 import Hero from "./components/Hero";
-
 
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
@@ -28,7 +26,6 @@ export default function RootLayout({
         <main className="h-[100vh]">
           <Hero />
           
-      
         </main>
         
       </body>

@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+import Footer from "@/app/components/Footer"
 
 const projectsData = [
   {
@@ -25,7 +26,7 @@ const projectsData = [
 
 function Page () {
   return (
-    <div id="projects" className="relative w-[75%] md:w-[60%] z-[1] h-[calc(100vh_-_8rem_-_35px)] flex flex-col justify-center m-auto">
+    <><div id="projects" className="relative w-[75%] md:w-[60%] z-[1] h-[calc(100vh_-_8rem_-_35px)] flex flex-col justify-center m-auto">
       <h1 className='font-semibold text-white mb-8'>Projects</h1>
       {projectsData.map((project) => (
         <div key={project.id} className='text-white py-4 w-full flex flex-col md:flex-row space-y-2 md:space-y-0'>
@@ -34,11 +35,12 @@ function Page () {
               {project.title}
             </a>
           </div>
-          <div className='text-black text-[15px]'>{project.description}</div>
+          <div className='text-black text-[13px]'>{project.description}</div>
         </div>
       ))}
-    </div>
+    </div><Footer /></>
   )
+  
 }
 
 export default Page
