@@ -73,46 +73,30 @@ export default function Hero (){
   return (
 
     <div className="container">
-      
-        {/*}
-          <nav className="flex justify-center top-[40px] w-full relative z-10">
-            <ul className='flex justify-center gap-8 text-[12px] text-black mb-0'>
-              <li onClick = {handleHome} style = {{cursor: "pointer"}}>Home</li>
-              <li onClick={handleAboutMe} style={{ cursor: "pointer" }}>About Me</li>
-              <li onClick={handleProjects} style={{ cursor: "pointer" }}>Projects</li>
-              <li onClick={handleContact} style={{ cursor: "pointer" }}>Contact</li>
-            </ul>
-          </nav>
-        */}
-        {showNav && (
-        <Navbar
-         
-          handleAboutMe={handleAboutMe}
-          handleProjects={handleProjects}
-          handleContact={handleContact}
-        />
+      {showNav && (
+      <Navbar
+       
+        handleAboutMe={handleAboutMe}
+        handleProjects={handleProjects}
+        handleContact={handleContact}
+      />
       )}
       
       {showAboutMe && <Experience />}
       {showProjects && <Projects />}
       {showContact && <Contact />}
       {showButton &&  (
-       
-          <div id="home" className=" w-[75%] md:w-[60%] z-[1] h-[calc(100vh_-_8rem_-_35px)] flex flex-col justify-center relative mx-auto items-center">
+        <div id="home" className=" w-[75%] md:w-[60%] z-[1] h-[calc(100vh_-_8rem_-_35px)] flex flex-col justify-center relative mx-auto items-center">
           <div className='flex flex-col justify-center items-center gap-8'>
-
           <h1>{fullText}</h1>
-          
           {showButton && (
-            
             <button onClick={handleContinue} className={showNav ? "fade-out" : ""}>
                 Continue
             </button>
           )}
-        </div>
+          </div>
         </div>
       )}
-        </div>
-      
+      </div>
   );
 }

@@ -76,10 +76,10 @@ const Navbar: React.FC<NavbarProps> = ({handleAboutMe, handleProjects, handleCon
         {nav && (
           <ul className="absolute w-full md:hidden flex flex-col justify-center items-center h-[82.7vh] bg-[url(/grass.jpeg)] text-white z-10">
             {navItems.map((item) => (
-              <li key={item.name} className="py-8 w-full text-center">
+              <li key={item.name} className="py-8 text-center">
                 <button
                   onClick={() => handleClose(item.href, item.action)}
-                  className="text-[20px] text-white hover:text-green-400 w-full"
+                  className="text-[20px] text-white hover:text-green-400"
                 >
                   {item.name}
                 </button>

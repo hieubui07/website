@@ -25,11 +25,8 @@ export default function RootLayout({
       >
         <main className="h-[100vh]">
           <Hero />
-          
-        </main>
-        
+        </main>     
       </body>
-
     </html>
   );
 }
