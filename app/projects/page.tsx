@@ -26,19 +26,19 @@ const projectsData = [
 
 function Page () {
   return (
-    <><div id="projects" className="relative w-[75%] md:w-[60%] z-[1] h-[calc(100vh_-_8rem_-_35px)] flex flex-col justify-center m-auto">
-      <h1 className='font-semibold text-white mb-8'>Projects</h1>
+    <div id="projects" className="w-[75%] md:w-[45%] z-[1] h-[calc(100vh_-_8rem_-_35px)] relative  flex flex-col justify-center m-auto">
+      <h1 className='font-semibold text-white mb-4 text-[14px] text-center'>Projects</h1>
       {projectsData.map((project) => (
-        <div key={project.id} className='text-white py-4 w-full flex flex-col md:flex-row space-y-2 md:space-y-0'>
-          <div className='flex flex-row space-x-0 md:space-x-4'>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className='w-[180px] text-black hover:underline text-[12px]'>
+        <div key={project.id} className='text-white py-4 w-full flex flex-col md:flex-row justify-between space-y-2 md:space-y-0'>
+          <div className='flex flex-row'>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className='w-[180px] text-blue-700 hover:underline text-[12px]'>
               {project.title}
             </a>
           </div>
-          <div className='text-black text-[13px]'>{project.description}</div>
+          <div className='flex justify-start text-[13px] text-black'>{project.description}</div>
         </div>
       ))}
-    </div><Footer /></>
+    </div>
   )
   
 }

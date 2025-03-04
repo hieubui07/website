@@ -7,13 +7,13 @@ import { li } from 'framer-motion/client';
 import { useRouter } from "next/navigation";
 
 interface NavbarProps {
-  //handleHome: () => void;
-  handleAboutMe: () => void;
+  handleHome: () => void;
+  handleExperience: () => void;
   handleProjects: () => void;
   handleContact: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({handleAboutMe, handleProjects, handleContact }) => {
+const Navbar: React.FC<NavbarProps> = ({handleHome, handleExperience, handleProjects, handleContact }) => {
   const [nav, setNav] = useState(false);
   const [rotation, setRotation] = useState(0);
   const router = useRouter();
@@ -34,7 +34,8 @@ const Navbar: React.FC<NavbarProps> = ({handleAboutMe, handleProjects, handleCon
 
   const navItems = [
     //{ name: "Home", action: handleHome, href: "/" },
-    { name: "About Me", action: handleAboutMe, href: "/experience" },
+    { name: "Home", action: handleHome, href: "/" },
+    { name: "Experience", action: handleExperience, href: "/experience" },
     { name: "Projects", action: handleProjects, href: "/projects" },
     { name: "Contact", action: handleContact, href: "/contact" },
   ];
@@ -44,9 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({handleAboutMe, handleProjects, handleCon
       <div className="w-full h-[100px] drop-shadow-lg">
         <div className="pl-6 md:p-0 flex items-center justify-between md:justify-normal w-full h-full">
           <div className="flex justify-between items-center md:mx-auto">
-            <div className="pr-8 font-bold">
-              <Link className="text-[20px] text-white" href="/">Logo</Link>
-            </div>
+           
 
             {/* Desktop Navigation */}
             <ul className="hidden md:flex justify-between items-center gap-8 text-[12px] text-black mb-0">
