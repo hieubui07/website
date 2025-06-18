@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     unoptimized: true, // Disable image optimization
   },
   /* Add other configuration options here */
+  devIndicators: false,
 };
 
 export default nextConfig;

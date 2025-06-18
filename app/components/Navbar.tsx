@@ -41,9 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({
     setNav(false);
     setRotation(0);
     setActivePage(href);
-    if (action) {
-      action();
-    }
+    action?.();
     router.push(href);
   };
 
@@ -83,15 +81,21 @@ const Navbar: React.FC<NavbarProps> = ({
                   >
                     <Link
                       href={item.href}
-                      className={`relative group ${
-                        isActive ? "text-white font-bold" : "text-black"
-                      }`}
                       onClick={() => {
                         setActivePage(item.href);
                         item.action();
                       }}
+                      className="no-underline"
+                      style={{ textDecoration: "none" }}
                     >
-                      <span className="relative z-10">{item.name}</span>
+                      <span
+                        className={`relative group no-underline ${
+                          isActive ? "text-white font-bold" : "text-black"
+                        }`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        {item.name}
+                      </span>
                       {isActive ? (
                         <motion.span
                           className="absolute bottom-0 left-0 h-[2px] w-full"
@@ -155,18 +159,19 @@ const Navbar: React.FC<NavbarProps> = ({
                   >
                     <motion.button
                       onClick={() => handleClose(item.href, item.action)}
-                      className={`text-[20px] ${
+                      className={`text-[20px] no-underline ${
                         isActive
                           ? "text-white font-bold"
                           : "text-black hover:text-white"
                       }`}
+                      style={{ textDecoration: "none" }}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
                       {item.name}
                       {isActive && (
                         <motion.div
-                          className="h-[2px]  mt-1 mx-auto"
+                          className="h-[2px] mt-1 mx-auto"
                           layoutId="mobileActiveIndicator"
                           initial={{ width: "0%" }}
                           animate={{ width: "100%" }}

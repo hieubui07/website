@@ -8,36 +8,19 @@ const experienceData = [
     id: "1",
     place: "Peterbilt Motors Company",
     title: "Technology Intern",
-    date: "May 2025 - Aug 2025",
+    date: "May 2025 - Present",
   },
   {
     id: "2",
     place: "University of Houston",
     title: "Teaching Assistant",
-    date: "Aug 2024 - Present",
+    date: "Aug 2024 - May 2025",
   },
   {
     id: "3",
     place: "University of Houston",
     title: "Information Technology",
     date: "May 2023 - Aug 2024",
-  },
-];
-
-const leadershipData = [
-  {
-    id: "1",
-    place: "Code[Coogs]",
-    title: "Vice President External",
-    link: "https://www.codecoogs.com/",
-    date: "May 2023 - May 2024",
-  },
-  {
-    id: "2",
-    place: "SASE UH",
-    title: "Mentor",
-    link: "https://www.uh-sase.org/",
-    date: "Aug 2024 - Present",
   },
 ];
 
@@ -174,55 +157,6 @@ function Page() {
             variants={dateVariants}
           >
             {experience.date}
-          </motion.div>
-        </motion.div>
-      ))}
-
-      {/* Leadership */}
-      <motion.h1
-        className="font-semibold text-white mt-2 mb-4 text-[14px] text-center"
-        variants={headerVariants}
-      >
-        Leadership
-      </motion.h1>
-
-      {leadershipData.map((leadership) => (
-        <motion.div
-          key={leadership.id}
-          className="text-black flex flex-row justify-between rounded-md mb-2"
-          variants={itemVariants}
-          whileHover="hover"
-        >
-          <div className="flex flex-col items-start pb-2">
-            <motion.a
-              href={leadership.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline text-[13px] pb-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {leadership.place.split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  custom={index}
-                  variants={letterVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.a>
-            <motion.div className="text-[12px]" variants={titleVariants}>
-              {leadership.title}
-            </motion.div>
-          </div>
-          <motion.div
-            className="flex justify-end text-right pl-6 text-[10px]"
-            variants={dateVariants}
-          >
-            {leadership.date}
           </motion.div>
         </motion.div>
       ))}
