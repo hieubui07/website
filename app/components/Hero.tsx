@@ -8,11 +8,13 @@ import Experience from "../experience/page";
 import Projects from "../projects/page";
 import Contact from "../contact/page";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Hero() {
   const [typedText, setTypedText] = useState("");
   const [currentRole, setCurrentRole] = useState(0);
-  const [showButton, setShowButton] = useState(true);
+  const [showContinueButton, setShowContinueButton] = useState(true);
+  const [showIntroSection, setShowIntroSection] = useState(true);
   const [showNav, setShowNav] = useState(false);
   const [showHome, setShowHome] = useState(false);
   const [showExperience, setShowExperience] = useState(false);
@@ -24,20 +26,21 @@ export default function Hero() {
   const handleExperience = () => {
     setShowExperience(true);
     setShowNav(true);
-    setShowButton(false);
+    setShowIntroSection(false);
     setShowContact(false);
     setShowProjects(false);
     setShowHome(false);
   };
 
   const handleContinue = () => {
-    setShowButton(false);
+    setShowContinueButton(false);
+    setShowIntroSection(false);
     setShowNav(true);
     setShowHome(true);
   };
 
   const handleHome = () => {
-    setShowButton(false);
+    setShowIntroSection(false);
     setShowNav(true);
     setShowExperience(false);
     setShowProjects(false);
@@ -50,7 +53,7 @@ export default function Hero() {
     setShowExperience(false);
     setShowProjects(true);
     setShowContact(false);
-    setShowButton(false);
+    setShowIntroSection(false);
     setShowHome(false);
   };
 
@@ -59,7 +62,7 @@ export default function Hero() {
     setShowExperience(false);
     setShowProjects(false);
     setShowContact(true);
-    setShowButton(false);
+    setShowIntroSection(false);
     setShowHome(false);
   };
 
@@ -73,7 +76,14 @@ export default function Hero() {
   }, [typedText, fullText]);
 
   return (
-    <div className="container">
+    <div className="container relative min-h-screen bg-background text-foreground theme-transition">
+      {/* Fixed Theme Toggle - Only visible after continuing */}
+      {showNav && (
+        <div className="fixed top-4 right-4 z-50">
+          <ThemeToggle />
+        </div>
+      )}
+
       {showNav && (
         <Navbar
           handleHome={handleHome}
@@ -86,14 +96,16 @@ export default function Hero() {
       {showExperience && <Experience />}
       {showProjects && <Projects />}
       {showContact && <Contact />}
-      {showButton && (
+
+      {/* Intro Section - only shows when showIntroSection is true */}
+      {showIntroSection && (
         <div
           id="home"
           className="w-[75%] md:w-[60%] z-[1] flex flex-col justify-center relative mx-auto items-center"
         >
-          <div className="flex flex-col justify-center items-center gap-8 h-[100vh]">
+          <div className="flex flex-col justify-center items-center gap-8 h-[100vh] text-foreground">
             <motion.h1
-              className="text-[15px]"
+              className="text-[15px] text-foreground theme-transition"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -101,6 +113,7 @@ export default function Hero() {
               {typedText}
               {typedText.length < fullText.length && (
                 <motion.span
+                  className="text-foreground"
                   animate={{ opacity: [1, 0, 1] }}
                   transition={{ repeat: Infinity, duration: 0.8 }}
                 >
@@ -110,6 +123,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.h2
+              className="text-foreground theme-transition"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
@@ -117,17 +131,18 @@ export default function Hero() {
               {title}
             </motion.h2>
 
-            {showButton && (
+            {/* Continue Button - only shows when showContinueButton is true */}
+            {showContinueButton && (
               <motion.button
                 onClick={handleContinue}
-                className={showNav ? "fade-out" : ""}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="nes-btn is-primary theme-transition hover:scale-105 active:scale-95"
               >
-                <Link href="/">Continue</Link>
+                Continue
               </motion.button>
             )}
           </div>
