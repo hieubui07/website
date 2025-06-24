@@ -8,7 +8,6 @@ import Experience from "../experience/page";
 import Projects from "../projects/page";
 import Contact from "../contact/page";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Hero() {
   const [typedText, setTypedText] = useState("");
@@ -76,21 +75,16 @@ export default function Hero() {
   }, [typedText, fullText]);
 
   return (
-    <div className="container relative min-h-screen bg-background text-foreground theme-transition">
-      {/* Fixed Theme Toggle - Only visible after continuing */}
+    <div className="container relative min-h-screen bg-background text-white theme-transition">
       {showNav && (
-        <div className="fixed top-4 right-4 z-50">
-          <ThemeToggle />
+        <div className="bg-black">
+          <Navbar
+            handleHome={handleHome}
+            handleExperience={handleExperience}
+            handleProjects={handleProjects}
+            handleContact={handleContact}
+          />
         </div>
-      )}
-
-      {showNav && (
-        <Navbar
-          handleHome={handleHome}
-          handleExperience={handleExperience}
-          handleProjects={handleProjects}
-          handleContact={handleContact}
-        />
       )}
       {showHome && <Home />}
       {showExperience && <Experience />}

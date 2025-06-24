@@ -5,7 +5,6 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import "nes.css/css/nes.min.css";
 import Hero from "./components/Hero";
-import { ThemeProvider } from "next-themes";
 
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
@@ -26,17 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={pressStart2P.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <main className="h-[100vh] w-full">
-            <Hero />
-          </main>
-        </ThemeProvider>
+      <body className={`${pressStart2P.className} bg-black`}>
+        <main className="h-[100vh] w-full">
+          <Hero />
+        </main>
       </body>
     </html>
   );

@@ -8,21 +8,22 @@ const projectsData = [
   {
     id: "1",
     title: "onetimeimages",
-    description:
-      "A website designed to upload an image to a cloud server where you can retrieve or delete it.",
+    place: "HackUTD 2024",
+    tech: "Next.js, Typescript, PinataAPI",
     link: "https://hackutd2024.vercel.app/",
   },
   {
     id: "2",
     title: "Welfare for Workers",
-    description:
-      "A friendly user website designed for construction workers to find the nearest psychiatrists.",
+    place: "HackTX 2023",
+    tech: "Streamlit, Python, MS Excel",
     link: "https://hacktx23-welfareforworkers.streamlit.app/",
   },
   {
     id: "3",
     title: "AutoRemind",
-    description: "A website used to track car maintenance and services.",
+    place: "HackUTA 2023",
+    tech: "React.js, Javascript, Figma",
     link: "https://github.com/hieubui07/autoremind-hackuta023",
   },
 ];
@@ -36,7 +37,7 @@ function Page() {
       transition: {
         duration: 0.6,
         when: "beforeChildren",
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
     exit: {
@@ -67,15 +68,15 @@ function Page() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.05,
-        duration: 0.3,
+        delay: i * 0.03,
+        duration: 0.2,
       },
     }),
   };
 
   // Project item animations
   const projectVariants = {
-    hidden: { x: -30, opacity: 0 },
+    hidden: { x: -20, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
@@ -88,47 +89,46 @@ function Page() {
     hover: {
       scale: 1.02,
       backgroundColor: "rgba(255, 255, 255, 0.05)",
-      borderRadius: "8px",
       transition: { duration: 0.2 },
     },
   };
 
-  // Description text animation
-  const descriptionVariants = {
-    hidden: { opacity: 0 },
+  // Tech text animation
+  const techVariants = {
+    hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
+      x: 0,
       transition: {
-        duration: 0.5,
-        delay: 0.3,
+        duration: 0.4,
+        delay: 0.2,
       },
     },
   };
 
-  // Link animation
-  const linkVariants = {
-    hover: {
-      scale: 1.05,
-      color: "#4361ee",
-      transition: { duration: 0.2 },
-    },
-    tap: {
-      scale: 0.95,
-      transition: { duration: 0.1 },
+  // Place text animation
+  const placeVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        delay: 0.3,
+      },
     },
   };
 
   return (
     <motion.div
       id="projects"
-      className="w-[75%] md:w-[45%] z-[1] h-[calc(100vh_-_8rem_-_35px)] relative flex flex-col justify-center m-auto"
+      className="w-[70%] md:w-[45%] z-[1] h-[calc(100vh_-_8rem_-_35px)] relative flex flex-col justify-center mx-auto"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
     >
       <motion.h1
-        className="font-semibold text-white mb-4 text-[14px] text-center"
+        className="font-semibold text-[#FBBC04] mb-4 text-[14px] text-center"
         variants={headerVariants}
       >
         Projects
@@ -137,37 +137,43 @@ function Page() {
       {projectsData.map((project) => (
         <motion.div
           key={project.id}
-          className="text-white py-4 px-3 w-full flex flex-col md:flex-row justify-between space-y-2 md:space-y-0"
+          className="text-black text-[12px] flex flex-row justify-between rounded-md mb-2"
           variants={projectVariants}
           whileHover="hover"
         >
-          <div className="flex flex-row">
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-[180px] text-blue-700 hover:underline text-[12px]"
-              whileHover="hover"
-              whileTap="tap"
+          <div className="flex flex-col justify-start pb-2">
+            <div className="text-blue-700 pb-2">
+              <motion.a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {project.title.split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    custom={index}
+                    variants={titleLetterVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </motion.a>
+            </div>
+            <motion.div
+              className="text-[11px] text-white"
+              variants={techVariants}
             >
-              {project.title.split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  custom={index}
-                  variants={titleLetterVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.a>
+              {project.tech}
+            </motion.div>
           </div>
           <motion.div
-            className="flex justify-start text-[13px] text-black"
-            variants={descriptionVariants}
+            className="flex justify-end text-right pl-6 text-[10px] text-white"
+            variants={placeVariants}
           >
-            {project.description}
+            {project.place}
           </motion.div>
         </motion.div>
       ))}

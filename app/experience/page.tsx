@@ -121,7 +121,7 @@ function Page() {
     >
       {/* Experience */}
       <motion.h1
-        className="font-semibold text-white mb-4 text-[14px] text-center"
+        className="font-semibold text-[#EA4335] mb-4 text-[14px] text-center"
         variants={headerVariants}
       >
         Experience
@@ -148,12 +148,15 @@ function Page() {
                 </motion.span>
               ))}
             </div>
-            <motion.div className="text-[12px]" variants={titleVariants}>
+            <motion.div
+              className="text-[12px] text-white"
+              variants={titleVariants}
+            >
               {experience.title}
             </motion.div>
           </div>
           <motion.div
-            className="flex justify-end text-right pl-6 text-[10px]"
+            className="flex justify-end text-right pl-6 text-[10px] text-white"
             variants={dateVariants}
           >
             {experience.date}

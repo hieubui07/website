@@ -52,21 +52,21 @@ const Contact = () => {
   return (
     <motion.div
       id="contact"
-      className="w-[70%] md:w-[45%] z-[1] h-[calc(100vh_-_8rem_-_35px)] relative flex flex-col justify-center mx-auto"
+      className="w-[70%] md:w-[45%] z-[1] h-[calc(100vh_-_8rem_-_35px)] relative flex flex-col justify-center mx-auto text-white"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
     >
       <motion.h1
-        className="text-white font-semibold mb-4 text-[14px] text-center"
+        className="text-[#34A853] font-semibold mb-4 text-[14px] text-center"
         variants={itemVariants}
       >
         Contact
       </motion.h1>
 
       <motion.div
-        className="text-black text-[12px] text-center"
+        className="text-white text-[12px] text-center"
         variants={itemVariants}
       >
         Feel free to connect with or contact me through my socials below!
@@ -84,7 +84,7 @@ const Contact = () => {
           whileHover="hover"
           whileTap="tap"
         >
-          <GrDocumentText color="black" size="1.7rem" />
+          <GrDocumentText color="white" size="1.7rem" />
         </motion.a>
 
         <motion.a
@@ -94,7 +94,7 @@ const Contact = () => {
           whileHover="hover"
           whileTap="tap"
         >
-          <FiLinkedin color="black" size="1.7rem" />
+          <FiLinkedin color="white" size="1.7rem" />
         </motion.a>
 
         <motion.a
@@ -104,7 +104,7 @@ const Contact = () => {
           whileHover="white"
           whileTap="tap"
         >
-          <FiMail color="black" size="1.7rem" />
+          <FiMail color="white" size="1.7rem" />
         </motion.a>
 
         <motion.a
@@ -114,7 +114,7 @@ const Contact = () => {
           whileHover="hover"
           whileTap="tap"
         >
-          <FiGithub color="black" size="1.7rem" />
+          <FiGithub color="white" size="1.7rem" />
         </motion.a>
       </motion.div>
     </motion.div>

@@ -57,12 +57,15 @@ function Home() {
       exit="exit"
     >
       <motion.h1
-        className="font-semibold text-white mb-4 text-[14px] text-center"
+        className="font-semibold mb-4 text-[14px] text-center text-[#4285F4]"
         variants={headerVariants}
       >
         About Me
       </motion.h1>
-      <motion.p className="text-[12px] mb-0 leading-6" variants={textVariants}>
+      <motion.p
+        className="text-[12px] mb-0 leading-6 text-white"
+        variants={textVariants}
+      >
         I'm a developer and problem solver. I like to build products and help
         people in every way possible. I love to learn and try new things! In my
         free time, I like to explore new places, find new coffee shops, travel,

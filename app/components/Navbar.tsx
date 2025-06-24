@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import rows_white from "@/public/assets/rows_white.png";
 import Image from "next/image";
-import ThemeToggle from "./ThemeToggle";
+
 import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -23,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const [nav, setNav] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [activePage, setActivePage] = useState("/");
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -47,30 +48,36 @@ const Navbar: React.FC<NavbarProps> = ({
   };
 
   const navItems = [
-    { name: "Home", action: handleHome, href: "/" },
-    { name: "Experience", action: handleExperience, href: "/experience" },
-    { name: "Projects", action: handleProjects, href: "/projects" },
-    { name: "Contact", action: handleContact, href: "/contact" },
+    {
+      name: "Home",
+      action: handleHome,
+      href: "/",
+      hoverColor: "#4285F4",
+    }, // Blue
+    {
+      name: "Experience",
+      action: handleExperience,
+      href: "/experience",
+      hoverColor: "#EA4335",
+    }, // Red
+    {
+      name: "Projects",
+      action: handleProjects,
+      href: "/projects",
+      hoverColor: "#FBBC04",
+    }, // Yellow
+    {
+      name: "Contact",
+      action: handleContact,
+      href: "/contact",
+      hoverColor: "#34A853",
+    }, // Green
   ];
 
   return (
     <nav className="relative top-0 left-0 right-0 z-10">
       <div className="w-full h-[100px] drop-shadow-lg">
-        <div className="pl-6 md:p-0 flex items-center justify-between w-full h-full">
-          {/* Mobile Menu Button - moved to left */}
-          <motion.div
-            className="md:hidden cursor-pointer"
-            onClick={handleClick}
-            whileTap={{ scale: 0.9 }}
-          >
-            <motion.div
-              animate={{ rotate: rotation }}
-              transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            >
-              <Image src={rows_white} alt="Menu" height={40} width={40} />
-            </motion.div>
-          </motion.div>
-
+        <div className="flex items-center justify-between w-full h-full px-6">
           {/* Desktop Navigation - centered */}
           <div className="hidden md:flex justify-center items-center flex-1">
             <motion.ul
@@ -81,6 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({
             >
               {navItems.map((item, index) => {
                 const isActive = activePage === item.href;
+                const isHovered = hoveredItem === item.name;
                 return (
                   <motion.li
                     key={item.name}
@@ -94,6 +102,8 @@ const Navbar: React.FC<NavbarProps> = ({
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="relative"
+                    onMouseEnter={() => setHoveredItem(item.name)}
+                    onMouseLeave={() => setHoveredItem(null)}
                   >
                     <Link
                       href={item.href}
@@ -110,7 +120,7 @@ const Navbar: React.FC<NavbarProps> = ({
                         }`}
                         style={{
                           textDecoration: "none",
-                          color: "var(--text-color)",
+                          color: "white",
                         }}
                       >
                         {item.name}
@@ -120,20 +130,20 @@ const Navbar: React.FC<NavbarProps> = ({
                     {isActive && (
                       <motion.span
                         className="absolute bottom-[-4px] left-0 h-[2px] w-full"
-                        style={{ backgroundColor: "var(--text-color)" }}
+                        style={{ backgroundColor: item.hoverColor }}
                         layoutId="activeIndicator"
                         initial={{ width: 0 }}
                         animate={{ width: "100%" }}
                         transition={{ duration: 0.3 }}
                       />
                     )}
-                    {/* Hover underline */}
+                    {/* Hover underline - only show when not active and hovered */}
                     {!isActive && (
                       <motion.span
                         className="absolute bottom-[-4px] left-0 h-[2px]"
-                        style={{ backgroundColor: "var(--text-color)" }}
+                        style={{ backgroundColor: item.hoverColor }}
                         initial={{ width: "0%" }}
-                        whileHover={{ width: "100%" }}
+                        animate={{ width: isHovered ? "100%" : "0%" }}
                         transition={{ duration: 0.3 }}
                       />
                     )}
@@ -142,6 +152,20 @@ const Navbar: React.FC<NavbarProps> = ({
               })}
             </motion.ul>
           </div>
+
+          {/* Mobile Menu Button - positioned at top right */}
+          <motion.div
+            className="md:hidden cursor-pointer ml-auto"
+            onClick={handleClick}
+            whileTap={{ scale: 0.9 }}
+          >
+            <motion.div
+              animate={{ rotate: rotation }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            >
+              <Image src={rows_white} alt="Menu" height={40} width={40} />
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Mobile Navigation Menu */}
@@ -152,7 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({
               animate={{ opacity: 1, height: "90vh" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute w-full md:hidden flex flex-col justify-center items-center bg-black dark:bg-white text-white z-10 overflow-hidden"
+              className="absolute w-full md:hidden flex flex-col justify-center items-center bg-black text-white z-10 overflow-hidden"
             >
               {/* Mobile Navigation Items */}
               <ul className="flex flex-col justify-center items-center flex-1">
@@ -161,7 +185,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   return (
                     <motion.li
                       key={item.name}
-                      className="py-8 text-center text-black relative"
+                      className="py-8 text-center relative"
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
@@ -174,10 +198,10 @@ const Navbar: React.FC<NavbarProps> = ({
                     >
                       <motion.button
                         onClick={() => handleClose(item.href, item.action)}
-                        className={`text-[20px] no-underline ${
+                        className={`text-[20px] no-underline transition-colors ${
                           isActive
-                            ? "text-white"
-                            : "text-black hover:text-white"
+                            ? "text-white font-medium"
+                            : "text-gray-300 hover:text-white"
                         }`}
                         style={{ textDecoration: "none" }}
                         whileHover={{ scale: 1.1 }}
