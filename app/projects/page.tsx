@@ -170,7 +170,7 @@ function Page() {
             </motion.div>
           </div>
           <motion.div
-            className="flex justify-end text-right pl-6 text-[10px] text-white"
+            className="flex justify-end text-right pl-6 text-[11px] text-white"
             variants={placeVariants}
           >
             {project.place}
