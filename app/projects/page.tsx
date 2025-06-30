@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Footer from "@/app/components/Footer";
 import { motion } from "framer-motion";
 
 const projectsData = [
@@ -137,12 +136,12 @@ function Page() {
       {projectsData.map((project) => (
         <motion.div
           key={project.id}
-          className="text-black text-[12px] flex flex-row justify-between rounded-md mb-2"
+          className="text-[12px] flex flex-row justify-between rounded-md mb-2"
           variants={projectVariants}
           whileHover="hover"
         >
           <div className="flex flex-col justify-start pb-2">
-            <div className="text-blue-700 pb-2">
+            <div className="text-[#FBBC04] pb-2">
               <motion.a
                 href={project.link}
                 target="_blank"
@@ -156,6 +155,7 @@ function Page() {
                     variants={titleLetterVariants}
                     initial="hidden"
                     animate="visible"
+                    className="text-[#FBBC04]"
                   >
                     {char}
                   </motion.span>

@@ -1,78 +1,78 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Home from "../home/page";
 import Experience from "../experience/page";
 import Projects from "../projects/page";
 import Contact from "../contact/page";
-import Link from "next/link";
+import Loader from "./Loader"; // Import the loader component
 
 export default function Hero() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [typedText, setTypedText] = useState("");
-  const [currentRole, setCurrentRole] = useState(0);
   const [showContinueButton, setShowContinueButton] = useState(true);
-  const [showIntroSection, setShowIntroSection] = useState(true);
-  const [showNav, setShowNav] = useState(false);
-  const [showHome, setShowHome] = useState(false);
-  const [showExperience, setShowExperience] = useState(false);
-  const [showProjects, setShowProjects] = useState(false);
-  const [showContact, setShowContact] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   const fullText = "hello, i'm Hieu Bui";
   const title = "Software Engineer";
 
+  // Determine what to show based on current pathname
+  const showIntroSection = pathname === "/" && showContinueButton && !isLoading;
+  const showNav = (pathname !== "/" || !showContinueButton) && !isLoading;
+  const showHome = pathname === "/" && !showContinueButton && !isLoading;
+  const showExperience = pathname === "/experience" && !isLoading;
+  const showProjects = pathname === "/projects" && !isLoading;
+  const showContact = pathname === "/contact" && !isLoading;
+
+  const finishLoading = () => {
+    setIsLoading(false);
+  };
+
   const handleExperience = () => {
-    setShowExperience(true);
-    setShowNav(true);
-    setShowIntroSection(false);
-    setShowContact(false);
-    setShowProjects(false);
-    setShowHome(false);
+    router.push("/experience");
   };
 
   const handleContinue = () => {
     setShowContinueButton(false);
-    setShowIntroSection(false);
-    setShowNav(true);
-    setShowHome(true);
+    // Stay on home page but hide intro section
   };
 
   const handleHome = () => {
-    setShowIntroSection(false);
-    setShowNav(true);
-    setShowExperience(false);
-    setShowProjects(false);
-    setShowContact(false);
-    setShowHome(true);
+    router.push("/");
+    setShowContinueButton(false); // Skip intro when navigating back
   };
 
   const handleProjects = () => {
-    setShowNav(true);
-    setShowExperience(false);
-    setShowProjects(true);
-    setShowContact(false);
-    setShowIntroSection(false);
-    setShowHome(false);
+    router.push("/projects");
   };
 
   const handleContact = () => {
-    setShowNav(true);
-    setShowExperience(false);
-    setShowProjects(false);
-    setShowContact(true);
-    setShowIntroSection(false);
-    setShowHome(false);
+    router.push("/contact");
   };
 
   useEffect(() => {
-    if (typedText.length < fullText.length) {
+    if (typedText.length < fullText.length && !isLoading) {
       const timeout = setTimeout(() => {
         setTypedText(fullText.slice(0, typedText.length + 1));
       }, 100);
       return () => clearTimeout(timeout);
     }
-  }, [typedText, fullText]);
+  }, [typedText, fullText, isLoading]);
+
+  // Reset continue button when navigating to home from other pages
+  useEffect(() => {
+    if (pathname !== "/") {
+      setShowContinueButton(false);
+    }
+  }, [pathname]);
+
+  // Show loader only on initial page load
+  if (isLoading) {
+    return <Loader finishLoading={finishLoading} />;
+  }
 
   return (
     <div className="container relative min-h-screen bg-background text-white theme-transition">
@@ -86,12 +86,13 @@ export default function Hero() {
           />
         </div>
       )}
+
       {showHome && <Home />}
       {showExperience && <Experience />}
       {showProjects && <Projects />}
       {showContact && <Contact />}
 
-      {/* Intro Section - only shows when showIntroSection is true */}
+      {/* Intro Section - only shows when on home page with continue button */}
       {showIntroSection && (
         <div
           id="home"
@@ -115,7 +116,6 @@ export default function Hero() {
                 </motion.span>
               )}
             </motion.h1>
-
             <motion.h2
               className="text-foreground theme-transition"
               initial={{ opacity: 0 }}
@@ -124,8 +124,6 @@ export default function Hero() {
             >
               {title}
             </motion.h2>
-
-            {/* Continue Button - only shows when showContinueButton is true */}
             {showContinueButton && (
               <motion.button
                 onClick={handleContinue}

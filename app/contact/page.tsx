@@ -84,7 +84,7 @@ const Contact = () => {
           whileHover="hover"
           whileTap="tap"
         >
-          <GrDocumentText color="white" size="1.7rem" />
+          <GrDocumentText color="#34A853" size="1.7rem" />
         </motion.a>
 
         <motion.a
@@ -94,7 +94,7 @@ const Contact = () => {
           whileHover="hover"
           whileTap="tap"
         >
-          <FiLinkedin color="white" size="1.7rem" />
+          <FiLinkedin color="#34A853" size="1.7rem" />
         </motion.a>
 
         <motion.a
@@ -104,7 +104,7 @@ const Contact = () => {
           whileHover="white"
           whileTap="tap"
         >
-          <FiMail color="white" size="1.7rem" />
+          <FiMail color="#34A853" size="1.7rem" />
         </motion.a>
 
         <motion.a
@@ -114,7 +114,7 @@ const Contact = () => {
           whileHover="hover"
           whileTap="tap"
         >
-          <FiGithub color="white" size="1.7rem" />
+          <FiGithub color="#34A853" size="1.7rem" />
         </motion.a>
       </motion.div>
     </motion.div>

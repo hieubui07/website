@@ -135,7 +135,7 @@ function Page() {
           whileHover="hover"
         >
           <div className="flex flex-col justify-start pb-2">
-            <div className="text-red-600 pb-2">
+            <div className="text-[#EA4335] pb-2">
               {experience.place.split("").map((char, index) => (
                 <motion.span
                   key={index}
