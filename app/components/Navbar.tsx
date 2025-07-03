@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   handleHome: () => void;
+  handleAbout: () => void;
   handleExperience: () => void;
   handleProjects: () => void;
   handleContact: () => void;
@@ -16,6 +17,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({
   handleHome,
+  handleAbout,
   handleExperience,
   handleProjects,
   handleContact,
@@ -49,9 +51,9 @@ const Navbar: React.FC<NavbarProps> = ({
 
   const navItems = [
     {
-      name: "Home",
-      action: handleHome,
-      href: "/",
+      name: "About",
+      action: handleAbout,
+      href: "/about",
       hoverColor: "#4285F4",
     }, // Blue
     {
@@ -78,6 +80,70 @@ const Navbar: React.FC<NavbarProps> = ({
     <nav className="relative top-0 left-0 right-0 z-10">
       <div className="w-full h-[100px] drop-shadow-lg">
         <div className="flex items-center justify-between w-full h-full px-6">
+          {/* Logo - positioned at left */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="flex-shrink-0"
+          >
+            <Link
+              href="/" // Changed from "/landing" to "/"
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage("/");
+                handleHome();
+                router.push("/");
+              }}
+              className="no-underline"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="cursor-pointer"
+              >
+                <svg
+                  viewBox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-12 h-12"
+                >
+                  <defs>
+                    <style>
+                      {`
+                        @keyframes drawPath {
+                          to {
+                            stroke-dashoffset: 0;
+                          }
+                        }
+                      `}
+                    </style>
+                  </defs>
+                  <path
+                    d="M 70 90 
+                      L 100 70 L 100 35
+                      L 45 70 L 45 135
+                      L 70 160 L 70 120 
+                      L 130 80 L 130 45
+                      L 155 70 L 155 132
+                      L 100 170 L 100 135
+                      L 130 115 
+                      "
+                    fill="none"
+                    stroke="#4CAF50"
+                    strokeWidth="10"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                    strokeDasharray="1000"
+                    strokeDashoffset="1000"
+                    style={{
+                      animation: "drawPath 2s ease-in-out forwards",
+                    }}
+                  />
+                </svg>
+              </motion.div>
+            </Link>
+          </motion.div>
+
           {/* Desktop Navigation - centered */}
           <div className="hidden md:flex justify-center items-center flex-1">
             <motion.ul

@@ -4,35 +4,27 @@ import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import "nes.css/css/nes.min.css";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
-
-const svgIcon = `data:image/svg+xml,${encodeURIComponent(`
-  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <path d="M 70 90 
-      L 100 70 L 100 35
-      L 45 70 L 45 135
-      L 70 160 L 70 120 
-      L 130 80 L 130 45
-      L 155 70 L 155 132
-      L 100 170 L 100 135
-      L 130 115"       
-      fill="none" 
-      stroke="#4CAF50" 
-      stroke-width="10" 
-      stroke-linejoin="round" 
-      stroke-linecap="round"/>  
-  </svg>
-`)}`;
 
 export const metadata: Metadata = {
   title: "Hieu Bui",
   description: "Hieu Bui",
   icons: {
-    icon: svgIcon,
-    apple: svgIcon,
-    shortcut: svgIcon,
+    icon: [
+      { url: "/favicon/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      {
+        url: "/favicon/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+    apple: "/favicon/apple-touch-icon-180x180.png",
+    shortcut: "/favicon/favicon.ico",
   },
 };
 

@@ -1,142 +1,170 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 import Navbar from "./Navbar";
-import Home from "../home/page";
+import About from "../about/page";
 import Experience from "../experience/page";
 import Projects from "../projects/page";
 import Contact from "../contact/page";
-import Loader from "./Loader"; // Import the loader component
+import Loader from "./Loader";
 
 export default function Hero() {
   const router = useRouter();
   const pathname = usePathname();
-  const [typedText, setTypedText] = useState("");
-  const [showContinueButton, setShowContinueButton] = useState(true);
+
   const [isLoading, setIsLoading] = useState(true);
-
-  const fullText = "hello, i'm Hieu Bui";
-  const title = "Software Engineer";
-
-  // Determine what to show based on current pathname
-  const showIntroSection = pathname === "/" && showContinueButton && !isLoading;
-  const showNav = (pathname !== "/" || !showContinueButton) && !isLoading;
-  const showHome = pathname === "/" && !showContinueButton && !isLoading;
-  const showExperience = pathname === "/experience" && !isLoading;
-  const showProjects = pathname === "/projects" && !isLoading;
-  const showContact = pathname === "/contact" && !isLoading;
 
   const finishLoading = () => {
     setIsLoading(false);
   };
 
-  const handleExperience = () => {
-    router.push("/experience");
-  };
+  // Typewriter effect with all three running simultaneously
+  const phrases = [
+    { text: "an Analyst", color: "text-blue-600" },
+    { text: "a Developer", color: "text-green-600" },
+    { text: "a Learner", color: "text-purple-600" },
+  ];
+  const [index, setIndex] = useState<number>(0);
+  const [fade, setFade] = useState<boolean>(true);
+  const [currentText, setCurrentText] = useState<string>("");
+  const [visibleText, setVisibleText] = useState<string>("");
 
-  const handleContinue = () => {
-    setShowContinueButton(false);
-    // Stay on home page but hide intro section
-  };
-
-  const handleHome = () => {
-    router.push("/");
-    setShowContinueButton(false); // Skip intro when navigating back
-  };
-
-  const handleProjects = () => {
-    router.push("/projects");
-  };
-
-  const handleContact = () => {
-    router.push("/contact");
-  };
-
+  // Combined typewriter effect
   useEffect(() => {
-    if (typedText.length < fullText.length && !isLoading) {
-      const timeout = setTimeout(() => {
-        setTypedText(fullText.slice(0, typedText.length + 1));
-      }, 100);
-      return () => clearTimeout(timeout);
-    }
-  }, [typedText, fullText, isLoading]);
+    if (pathname === "/" && !isLoading) {
+      const message = "Hello World!";
+      const name = "Hieu";
+      const typingSpeed = 200;
 
-  // Reset continue button when navigating to home from other pages
-  useEffect(() => {
-    if (pathname !== "/") {
-      setShowContinueButton(false);
-    }
-  }, [pathname]);
+      // Reset states
+      setVisibleText("");
+      setCurrentText("");
+      setIndex(0);
+      setFade(true);
 
-  // Show loader only on initial page load
+      // Type "Hello World!" first
+      let messageIndex = 0;
+      const messageInterval = setInterval(() => {
+        if (messageIndex < message.length) {
+          setVisibleText(message.slice(0, messageIndex + 1));
+          messageIndex++;
+        } else {
+          clearInterval(messageInterval);
+
+          // After message is complete, start typing name
+          setTimeout(() => {
+            let nameIndex = 0;
+            const nameInterval = setInterval(() => {
+              if (nameIndex < name.length) {
+                setCurrentText(name.slice(0, nameIndex + 1));
+                nameIndex++;
+              } else {
+                clearInterval(nameInterval);
+
+                // After name is complete, start phrase cycling
+                setTimeout(() => {
+                  const phraseInterval = setInterval(() => {
+                    setFade(false);
+                    setTimeout(() => {
+                      setIndex(
+                        (currentIndex) => (currentIndex + 1) % phrases.length
+                      );
+                      setFade(true);
+                    }, 500);
+                  }, 3000);
+
+                  // Store phrase interval for cleanup
+                  return () => clearInterval(phraseInterval);
+                }, 500);
+              }
+            }, typingSpeed);
+
+            return () => clearInterval(nameInterval);
+          }, 500);
+        }
+      }, typingSpeed);
+
+      return () => {
+        clearInterval(messageInterval);
+      };
+    }
+  }, [pathname, isLoading]);
+
+  // Show pages regardless of loading state (except home page during loading)
+  const handleHome = () => router.push("/");
+  const handleAbout = () => router.push("/about");
+  const handleExperience = () => router.push("/experience");
+  const handleProjects = () => router.push("/projects");
+  const handleContact = () => router.push("/contact");
+
+  const showAbout = pathname === "/about" && !isLoading;
+  const showExperience = pathname === "/experience" && !isLoading;
+  const showProjects = pathname === "/projects" && !isLoading;
+  const showContact = pathname === "/contact" && !isLoading;
+  // Only show loader when on home page and loading
   if (isLoading) {
     return <Loader finishLoading={finishLoading} />;
   }
 
   return (
     <div className="container relative min-h-screen bg-background text-white theme-transition">
-      {showNav && (
-        <div className="bg-black">
-          <Navbar
-            handleHome={handleHome}
-            handleExperience={handleExperience}
-            handleProjects={handleProjects}
-            handleContact={handleContact}
-          />
-        </div>
-      )}
+      {/* Navbar is always shown */}
+      <div className="bg-black">
+        <Navbar
+          handleHome={handleHome}
+          handleAbout={handleAbout}
+          handleExperience={handleExperience}
+          handleProjects={handleProjects}
+          handleContact={handleContact}
+        />
+      </div>
 
-      {showHome && <Home />}
+      {/* Conditionally show section content */}
+      {showAbout && <About />}
       {showExperience && <Experience />}
       {showProjects && <Projects />}
       {showContact && <Contact />}
 
-      {/* Intro Section - only shows when on home page with continue button */}
-      {showIntroSection && (
-        <div
-          id="home"
-          className="w-[75%] md:w-[60%] z-[1] flex flex-col justify-center relative mx-auto items-center"
-        >
-          <div className="flex flex-col justify-center items-center gap-8 h-[100vh] text-foreground">
-            <motion.h1
-              className="text-[15px] text-foreground theme-transition"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+      {/* Home page with typewriter */}
+      {pathname === "/" && (
+        <div className="flex flex-col text-[16px] text-white font-normal h-[calc(100vh_-_8rem_-_35px)] w-full justify-center text-center">
+          <div className="flex justify-center">
+            <span className="flex-1 text-right -translate-x-12">
+              {`>`}&nbsp;
+            </span>
+            <span
+              className={`flex-1 text-left -translate-x-12 duration-700 inline-block ${visibleText}`}
             >
-              {typedText}
-              {typedText.length < fullText.length && (
-                <motion.span
-                  className="text-foreground"
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ repeat: Infinity, duration: 0.8 }}
-                >
-                  |
-                </motion.span>
-              )}
-            </motion.h1>
-            <motion.h2
-              className="text-foreground theme-transition"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              {visibleText}
+              <span className="animate-pulse">_</span>
+            </span>
+          </div>
+          <div className="flex justify-center my-6">
+            <span className="flex-1 text-right">My na</span>
+            <span
+              className={`flex-1 text-left transition-opacity duration-100 inline-block ${currentText}`}
             >
-              {title}
-            </motion.h2>
-            {showContinueButton && (
-              <motion.button
-                onClick={handleContinue}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="nes-btn is-primary theme-transition hover:scale-105 active:scale-95"
+              me is{" "}
+              <span
+                className={`text-blue-400 ${
+                  fade ? "opacity-100" : "opacity-0"
+                }`}
               >
-                Continue
-              </motion.button>
-            )}
+                {currentText}
+              </span>
+            </span>
+          </div>
+
+          <div className="flex justify-center">
+            <span className="flex-1 text-right">I am&nbsp;</span>
+            <span
+              className={`flex-1 text-left transition-opacity duration-700 inline-block ${
+                fade ? "opacity-100" : "opacity-0"
+              } ${phrases[index].color}`}
+            >
+              {phrases[index].text}
+            </span>
           </div>
         </div>
       )}
