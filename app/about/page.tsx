@@ -1,78 +1,40 @@
+"use client";
+
 import React from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
 
-function Home() {
-  // Main container animation
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        when: "beforeChildren",
-        staggerChildren: 0.2,
-      },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  // Header animation
-  const headerVariants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 15,
-      },
-    },
-  };
-
-  // Text animation
-  const textVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
-
+function About() {
   return (
-    <motion.div
-      id="home"
-      className="w-[70%] md:w-[45%] z-[1] h-[calc(100vh_-_8rem_-_35px)] relative flex flex-col justify-center mx-auto"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
+    <main
+      id="about"
+      className="h-auto mx-auto flex max-w-2xl flex-1 flex-col gap-16 leading-[1.6] py-16 sm:py-32"
     >
-      <motion.h1
-        className="font-semibold mb-4 text-[14px] text-center text-[#4285F4]"
-        variants={headerVariants}
-      >
-        About Me
-      </motion.h1>
-      <motion.p
-        className="text-[12px] mb-0 leading-6 text-white"
-        variants={textVariants}
-      >
-        I'm a developer and problem solver. I like to build products and help
-        people in every way possible. I love to learn and try new things! In my
-        free time, I like to explore new places, find new coffee shops, travel,
-        play sports, take photos, and do anything productive!
-      </motion.p>
-    </motion.div>
+      <div className="flex flex-col gap-6 px-4 ">
+        <Image
+          src="/img/astronaut.jpg"
+          alt="Me"
+          width={60}
+          height={60}
+          draggable={false}
+          className="mb-8 rounded-full select-none"
+        />
+        <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
+          I recently graduated from the University of Houston with a
+          Bachelor&apos;s degree in Computer Science
+        </p>
+
+        <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
+          When not working, I enjoy playing and watching sports especially
+          soccer. I also like to photography, travel and explore new places.
+        </p>
+
+        <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
+          I love to build different lego sets, especially different cars, random
+          Daiso animal sets, and Pokemon ones.
+        </p>
+      </div>
+    </main>
   );
 }
 
-export default Home;
+export default About;

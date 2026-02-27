@@ -1,11 +1,12 @@
-import React from "react";
-import Hero from "@/app/components/Hero";
-import Footer from "@/app/components/Footer";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import Header from "./components/Header";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
-      <Hero />
+      <Header />
     </>
   );
 }

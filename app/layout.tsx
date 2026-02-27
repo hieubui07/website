@@ -1,44 +1,47 @@
 import type { Metadata } from "next";
-import React from "react";
-import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/Footer";
-import "nes.css/css/nes.min.css";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import { Providers } from "./providers";
+import { Inter, Source_Serif_4 } from "next/font/google";
+import { cn } from "../lib/utils/utils";
+import Nav from "./components/Nav";
 
-const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const ptSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
-  title: "Hieu Bui",
-  description: "Hieu Bui",
-  icons: {
-    icon: [
-      { url: "/favicon/favicon.ico", type: "image/x-icon" },
-      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      {
-        url: "/favicon/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-    ],
-    apple: "/favicon/apple-touch-icon-180x180.png",
-    shortcut: "/favicon/favicon.ico",
-  },
+  title: "Your Name - Portfolio",
+  description: "Software designer and developer",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${pressStart2P.className} bg-black`}>
-        <main className="h-[100vh] w-full">
-          <Hero />
-        </main>
+      <head>
+        <meta name="viewport" />
+        <meta
+          name="theme-color"
+          content="#fff"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="rgb(10, 10, 10)"
+          media="(prefers-color-scheme: dark)"
+        />
+      </head>
+      <body className={cn(inter.variable, ptSerif.variable)}>
+        <Providers>
+          <Nav />
+          {children}
+        </Providers>
       </body>
     </html>
   );

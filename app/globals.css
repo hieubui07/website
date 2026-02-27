@@ -2,8 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apply black background */
+html,
+:root {
+  --background: #ffffff;
+  --text-color-primary: var(--color-neutral-900);
+  --text-color-secondary: var(--color-neutral-600);
+  --text-color-tertiary: var(--color-neutral-500);
+  --text-color-quaternary: var(--color-neutral-400);
+  --text-color-brand: #fc532a;
+  --background-color-brand: #fc532a;
+  --background-color-main: var(--color-neutral-50);
+  --background-color-primary: var(--color-white);
+  --background-color-secondary: var(--color-neutral-50);
+  --background-color-tertiary: var(--color-neutral-100);
+  --background-color-quaternary: var(--color-neutral-200);
+  --background-color-elevated: var(--color-white);
+  --border-color-primary: #0000001f;
+  --border-color-secondary: #00000017;
+  --scrollbar-color: var(--color-neutral-300);
+  --color-red-300: lab(76.5514% 36.422 15.5335);
+  --color-red-400: lab(63.7053% 60.745 31.3109);
+  --color-red-500: lab(55.4814% 75.0732 48.8528);
+  --color-red-600: lab(48.4493% 77.4328 61.5452);
+  --color-red-900: lab(28.5139% 44.5539 29.0463);
+  --color-amber-50: lab(98.6252% -.635922 8.42309);
+  --color-amber-100: lab(95.916% -1.21653 23.111);
+  --color-amber-300: lab(86.4156% 6.13147 78.3961);
+  --color-amber-800: lab(37.8822% 37.1699 52.2718);
+  --color-amber-900: lab(31.2288% 30.2627 40.0378);
+  --color-yellow-500: lab(76.3898% 14.5258 98.4589);
+  --color-yellow-900: lab(32.3865% 21.1273 38.5959);
+  --color-green-500: lab(70.5521% -66.5147 45.8073);
+  --color-green-900: lab(30.797% -29.6927 17.382);
+  --color-emerald-50: lab(97.8462% -6.94966 1.85487);
+  --color-emerald-100: lab(94.9004% -17.0769 5.63836);
+  --color-emerald-300: lab(83.9203% -48.7124 13.8849);
+  --color-emerald-800: lab(35.3675% -33.1188 8.04002);
+  --color-emerald-900: lab(28.8637% -26.9249 5.45986);
+  --color-blue-50: lab(96.492% -1.14644 -5.11479);
+  --color-blue-100: lab(92.0301% -2.24757 -11.6453);
+  --color-blue-300: lab(77.5052% -6.4629 -36.42);
+  --color-blue-500: lab(54.1736% 13.3369 -74.6839);
+  --color-blue-600: lab(44.0605% 29.0279 -86.0352);
+  --color-blue-800: lab(30.2514% 27.7853 -70.2699);
+  --color-blue-900: lab(26.1542% 15.7545 -51.5504);
+  --color-purple-50: lab(97.1627% 2.99937 -4.13398);
+  --color-purple-100: lab(93.3333% 6.97437 -9.83434);
+  --color-purple-300: lab(78.3298% 26.2195 -34.9499);
+  --color-purple-800: lab(30.6017% 56.7637 -64.4751);
+  --color-purple-900: lab(24.9401% 45.2703 -51.2728);
+  --color-rose-50: lab(96.2369% 4.94155 1.28011);
+  --color-rose-100: lab(92.8221% 9.86832 2.60075);
+  --color-rose-300: lab(76.6339% 38.3549 9.68835);
+  --color-rose-800: lab(34.6481% 60.802 20.1957);
+  --color-rose-900: lab(29.7104% 51.514 12.6253);
+  --color-gray-100: lab(96.1596% -.0823438 -1.13575);
+  --color-gray-200: lab(91.6229% -.159115 -2.26791);
+  --color-gray-300: lab(85.1236% -.612259 -3.7138);
+  --color-gray-800: lab(16.1051% -1.18239 -11.7533);
+  --color-gray-900: lab(8.11897% .811279 -12.254);
+  --color-neutral-50: lab(98.26% 0 0);
+  --color-neutral-100: lab(96.52% -.0000298023 .0000119209);
+  --color-neutral-200: lab(90.952% 0 -.0000119209);
+  --color-neutral-300: lab(84.92% 0 -.0000119209);
+  --color-neutral-400: lab(66.128% -.0000298023 .0000119209);
+  --color-neutral-500: lab(48.496% 0 0);
+  --color-neutral-600: lab(34.924% 0 0);
+  --color-neutral-700: lab(27.036% 0 0);
+  --color-neutral-800: lab(15.204% 0 -.00000596046);
+  --color-neutral-900: lab(7.78201% -.0000149012 0);
+  --color-neutral-950: lab(2.75381% 0 0);  
+}
+
+.dark {
+  --background: #000000;
+  --text-color-primary: #ffffffe6;
+  --text-color-secondary: #ffffffb3;
+  --text-color-tertiary: #ffffff80;
+  --text-color-quaternary: #ffffff52;
+  --background-color-main: var(--color-neutral-950);
+  --background-color-primary: var(--color-neutral-950);
+  --background-color-secondary: var(--color-neutral-900);
+  --background-color-tertiary: var(--color-neutral-800);
+  --background-color-quaternary: #ffffff08;
+  --background-color-elevated: var(--color-neutral-900);
+  --border-color-primary: #ffffff1f;
+  --border-color-secondary: #ffffff17;
+  --scrollbar-color: var(--color-neutral-600);
+}
+
 body {
-  background-color: #000000;
-  transition: background-color 0.3s ease;
+  background: var(--background);
 }
