@@ -13,9 +13,6 @@ const ptSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  icons: {
-    icon: "/favicon.png", // regular favicon
-  },
   title: "Hieu Bui",
   description: "Software designer and developer",
 };
