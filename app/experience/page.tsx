@@ -14,7 +14,7 @@ function Experience() {
     >
       <div className="flex flex-col gap-6 px-4 ">
         <Image
-          src="/img/astronaut.jpg"
+          src="/img/astronaut.webp"
           alt="Me"
           width={60}
           height={60}
@@ -22,8 +22,9 @@ function Experience() {
           className="mb-8 rounded-full select-none"
         />
         <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
-          I currently work as a software engineer for Amentum contracting for
-          NASA, where I support the thermal-vacuum test facility.
+          I currently work as a software engineer for Amentum Technology
+          contracting for NASA, where I support the thermal-vacuum test
+          facility.
         </p>
 
         <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
@@ -33,9 +34,9 @@ function Experience() {
         </p>
 
         <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
-          In college, I had the chance to work as a teaching assistant for CS
-          department for an upper level database systems course. And I was also
-          working for the IT department supporting students and faculty.
+          In college, I worked as a teaching assistant for CS department for an
+          upper level database systems course. And I was also working for the IT
+          department supporting students and faculty.
         </p>
       </div>
       <div className="flex flex-col gap-4 px-4 ">

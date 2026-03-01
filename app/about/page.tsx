@@ -15,7 +15,7 @@ function About() {
     >
       <div className="flex flex-col gap-6 px-4 ">
         <Image
-          src="/img/astronaut.jpg"
+          src="/img/astronaut.webp"
           alt="Me"
           width={60}
           height={60}

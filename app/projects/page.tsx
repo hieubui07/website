@@ -14,7 +14,7 @@ function Projects() {
     >
       <div className="flex flex-col gap-6 px-4 ">
         <Image
-          src="/img/astronaut.jpg"
+          src="/img/astronaut.webp"
           alt="Me"
           width={60}
           height={60}
@@ -22,9 +22,9 @@ function Projects() {
           className="mb-8 rounded-full select-none"
         />
         <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
-          Past projects that I have worked on, both for class and hackathons.
+          Past projects that I have worked on, both for classes and hackathons.
           Some tools I have used include C++, Python, SQL, JavaScript, React,
-          Next.js, Node.js, MSSQL Server, MySQL, and Streamlit.
+          Next.js, Node.js, MSSQL Server, MySQL, and much more!
         </p>
       </div>
       <div className="flex flex-col gap-4 px-4 ">

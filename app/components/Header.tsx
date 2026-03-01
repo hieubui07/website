@@ -9,7 +9,7 @@ export default async function Header() {
       <main className="h-[67vh] mx-auto flex max-w-2xl flex-1 flex-col gap-16 leading-[1.6] py-16 sm:py-32">
         <div className="flex flex-col gap-4 px-4 ">
           <Image
-            src="/img/astronaut.jpg"
+            src="/img/astronaut.webp"
             alt="Me"
             width={60}
             height={60}
