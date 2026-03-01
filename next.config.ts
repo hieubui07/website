@@ -20,15 +20,6 @@ const nextConfig: NextConfig = {
     // Other experimental features can go here
   },
   
-  // Turbopack configuration (moved from experimental.turbo)
-  turbopack: {
-    rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js',
-      },
-    },
-  },
   
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
