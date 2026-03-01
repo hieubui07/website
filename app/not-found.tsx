@@ -7,7 +7,7 @@ export default function NotFound() {
         404
       </h1>
       <p className="text-[var(--text-color-secondary)]">
-        This page doesn't exist.
+        This page doesn&apos;t exist.
       </p>
       <Link href="/" className="text-[var(--text-color-tertiary)] underline">
         Go home

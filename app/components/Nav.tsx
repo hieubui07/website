@@ -48,7 +48,6 @@ const navItems: NavItem[] = [
 ];
 
 const mainItems = navItems.filter((i) => i.section === "main");
-const projectItems = navItems.filter((i) => i.section === "projects");
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);

@@ -50,8 +50,7 @@ function Experience() {
               target="_blank"
               className="inline-flex flex-1 text-xl group/list-item flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:gap-3"
             >
-              <img
-                alt="/img/nasa.png"
+              <Image
                 draggable="false"
                 loading="lazy"
                 width="30"
@@ -59,6 +58,7 @@ function Experience() {
                 decoding="async"
                 data-nimg="1"
                 src="/img/nasa.png"
+                alt={"NASA"}
               />
 
               <div className="flex items-center gap-2 sm:contents">
@@ -82,7 +82,7 @@ function Experience() {
               target="_blank"
               className="inline-flex flex-1 text-xl group/list-item flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:gap-3"
             >
-              <img
+              <Image
                 draggable="false"
                 loading="lazy"
                 width="30"
@@ -90,6 +90,7 @@ function Experience() {
                 decoding="async"
                 data-nimg="1"
                 src="/img/peterbilt.png"
+                alt={"Peterbilt Motors Company"}
               />
 
               <div className="flex items-center gap-2 sm:contents">
@@ -113,7 +114,7 @@ function Experience() {
               target="_blank"
               className="inline-flex flex-1 text-xl group/list-item flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:gap-3"
             >
-              <img
+              <Image
                 draggable="false"
                 loading="lazy"
                 width="30"
@@ -121,6 +122,7 @@ function Experience() {
                 decoding="async"
                 data-nimg="1"
                 src="/img/uh.png"
+                alt={"University of Houston"}
               />
 
               <div className="flex items-center gap-2 sm:contents">
@@ -144,7 +146,7 @@ function Experience() {
               target="_blank"
               className="inline-flex flex-1 text-xl group/list-item flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:gap-3"
             >
-              <img
+              <Image
                 draggable="false"
                 loading="lazy"
                 width="30"
@@ -152,6 +154,7 @@ function Experience() {
                 decoding="async"
                 data-nimg="1"
                 src="/img/uh.png"
+                alt={"University of Houston"}
               />
 
               <div className="flex items-center gap-2 sm:contents">
