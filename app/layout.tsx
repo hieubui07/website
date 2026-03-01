@@ -13,7 +13,7 @@ const ptSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name - Portfolio",
+  title: "Hieu Bui",
   description: "Software designer and developer",
 };
 

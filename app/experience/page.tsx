@@ -1,8 +1,12 @@
-"use client";
-import React from "react";
 import Image from "next/image";
+import { Metadata } from "next";
+import { FiLinkedin, FiMail, FiGithub } from "react-icons/fi";
 
-export default function Experience() {
+export const metadata: Metadata = {
+  title: "Experience",
+};
+
+function Experience() {
   return (
     <main
       id="about"
@@ -18,8 +22,8 @@ export default function Experience() {
           className="mb-8 rounded-full select-none"
         />
         <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
-          I currently work as a software engineer at NASA contracting for
-          Amentum, where I support the thermal-vacuum test facility.
+          I currently work as a software engineer for Amentum contracting for
+          NASA, where I support the thermal-vacuum test facility.
         </p>
 
         <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
@@ -164,6 +168,21 @@ export default function Experience() {
           </li>
         </ul>
       </div>
+      <div className="flex flex-row gap-6 px-4 text-[var(--text-color-tertiary)]">
+        <a href="https://www.linkedin.com/in/hbui0107/" target="blank">
+          <FiLinkedin size="32px" />
+        </a>
+        <a
+          href="https://mail.google.com/mail/u/1/?fs=1&to=hieubui0107@gmail.com&tf=cm"
+          target="blank"
+        >
+          <FiMail size="32px" />
+        </a>
+        <a href="https://github.com/hieubui07" target="blank">
+          <FiGithub size="32px" />
+        </a>
+      </div>
     </main>
   );
 }
+export default Experience;

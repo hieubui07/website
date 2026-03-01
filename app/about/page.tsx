@@ -1,7 +1,11 @@
-"use client";
-
+import type { Metadata } from "next";
 import React from "react";
 import Image from "next/image";
+import { FiLinkedin, FiMail, FiGithub } from "react-icons/fi";
+
+export const metadata: Metadata = {
+  title: "About",
+};
 
 function About() {
   return (
@@ -29,9 +33,23 @@ function About() {
         </p>
 
         <p className="text-[var(--text-color-secondary)] text-2xl font-medium text-pretty">
-          I love to build different lego sets, especially different cars, random
+          I love to build different lego sets, especially Technic cars, random
           Daiso animal sets, and Pokemon ones.
         </p>
+      </div>
+      <div className="flex flex-row gap-6 px-4 text-[var(--text-color-tertiary)]">
+        <a href="https://www.linkedin.com/in/hbui0107/" target="blank">
+          <FiLinkedin size="32px" />
+        </a>
+        <a
+          href="https://mail.google.com/mail/u/1/?fs=1&to=hieubui0107@gmail.com&tf=cm"
+          target="blank"
+        >
+          <FiMail size="32px" />
+        </a>
+        <a href="https://github.com/hieubui07" target="blank">
+          <FiGithub size="32px" />
+        </a>
       </div>
     </main>
   );

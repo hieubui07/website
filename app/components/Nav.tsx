@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FiMenu, FiX, FiLinkedin, FiMail, FiGithub } from "react-icons/fi";
+import { FiLinkedin, FiMail, FiGithub } from "react-icons/fi";
+import MenuButton from "./MenuButton";
 
 const routeNames: Record<string, string> = {
   "/about": "About",
@@ -33,12 +34,6 @@ const navItems: NavItem[] = [
     isActive: (p) => p === "/about",
   },
   {
-    label: "Writing",
-    href: "/writing",
-    section: "main",
-    isActive: (p) => p.startsWith("/writing"),
-  },
-  {
     label: "Projects",
     href: "/projects",
     section: "main",
@@ -64,17 +59,7 @@ export default function Navigation() {
     <>
       {/* Top Bar */}
       <div className="sticky top-0 z-50 flex h-14 items-center gap-2 px-3 bg-white dark:bg-black">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex select-none cursor-pointer items-center justify-center h-[36px] w-[36px] rounded-full hover:bg-black/[0.08] dark:hover:bg-white/[0.12] transition-colors"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-        >
-          {isOpen ? (
-            <FiX className="w-5 h-5 text-black dark:text-white" />
-          ) : (
-            <FiMenu className="w-5 h-5 text-black dark:text-white" />
-          )}
-        </button>
+        <MenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
         {/* Breadcrumb - only show when not on home page */}
         {pathname !== "/" && (
