@@ -4,6 +4,7 @@ import { Providers } from "./providers";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { cn } from "../lib/utils/utils";
 import Nav from "./components/Nav";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const ptSerif = Source_Serif_4({
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Providers>
           <Nav />
           {children}
+          <Analytics />
         </Providers>
       </body>
     </html>
